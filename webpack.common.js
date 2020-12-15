@@ -33,7 +33,19 @@ module.exports = {
           // Compiles Sass to CSS
           'sass-loader',
         ],
-      }
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg|webp|mp4)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash].[ext]",
+              outputPath: "assets/images",
+            },
+          },
+        ],
+      },
     ]
   },
   resolve: {

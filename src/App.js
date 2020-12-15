@@ -1,10 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
+import { ThemeProvider } from "@material-ui/core";
+import { ApolloProvider } from "@apollo/client";
 
-const App = () => (
-  <Fragment>
-    <h1>Hello World!!!</h1>
-    <button onClick={() => electron.notificationApi.sendNotification('Message')} >RENDER NOTIFICATION</button>
-  </Fragment>
-)
+// Own Dependencies
+import Theme from "./theme";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import AClient from "./config/apollo";
+
+//CSS
+import "./index.css";
+
+function App() {
+  return (
+    <Fragment>
+      <ApolloProvider client={AClient}>
+        <ThemeProvider theme={Theme}>
+          <Navbar />
+          <Home />
+        </ThemeProvider>
+      </ApolloProvider>
+    </Fragment>
+  );
+}
 
 export default App;
